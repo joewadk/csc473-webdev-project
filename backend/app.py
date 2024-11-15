@@ -16,7 +16,7 @@ supabase_key = os.getenv("VITE_SUPABASE_ANON_KEY")
 
 supabase: Client = create_client(supabase_url, supabase_key) #create the supabase client
 
-@app.route('/courses', methods=['GET']) #route to get all courses
+@app.route('/getCourses', methods=['GET']) #route to get all courses
 def get_courses():
     try:
         response = supabase.table('courses').select('*').execute()

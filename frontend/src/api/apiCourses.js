@@ -1,20 +1,21 @@
-import supabaseClient from "@/utils/supabase";
+export async function getCourses() {
+  try {
+    const response = await fetch('/getCourses', { //await the response from flask server
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-export async function getCourses(token) {
-  const supabase = await supabaseClient(token);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
 
-  // let query = supabase.from("course_enrollments").select("*"); 
-  let query = supabase.from("course_enrollments").select(`*,
-    courses:course_id (
-      *
-    )`);
-
-  const { data, error } = await query;
-
-  if (error) {
-    console.error("Error fetching courses:", error);
+    const data = await response.json();
+    console.log('Fetched courses:', data); //console log to debug
+    return data;
+  } catch (error) {
+    console.error('Error fetching courses:', error);
     return null;
   }
-
-  return data;
 }

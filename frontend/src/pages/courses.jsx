@@ -13,9 +13,8 @@ import React, { useEffect } from "react";
 import { BarLoader } from "react-spinners";
 
 const Courses = () => {
-  const { isLoaded } = useUser();
+  const { isLoaded } = useUser(); //load use state to handle if a user is loaded
 
-  
   if (!isLoaded) {
     console.log("courses")
     return (
@@ -31,7 +30,7 @@ const Courses = () => {
     loading: loadingCourses,
   } = useFetch(getCourses);
 
-  console.log(courses);
+  console.log(courses);//debug if it worked
 
   useEffect(() => {
     if (isLoaded) {
@@ -44,20 +43,34 @@ const Courses = () => {
     <>
       <h1 className="font-bold text-4xl sm:text-6xl pb-10 pl-10">Courses</h1>
       <div className="flex gap-6">
-
         {loadingCourses === false && (
-          <div>
+          <div className="flex flex-wrap gap-4">
             {courses?.length ? (
-              courses.map((course) => {
-                return <span>{course.courses.name} </span>
-              })
-            ): (
-              <div> No Courses Found </div>
+              courses.map((course) => ( //course map starts here
+                <Card key={course.id} className="w-1/5">
+                  <CardHeader>
+                    <CardTitle>{course.name}</CardTitle>
+                    <CardDescription>{course.created_at}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Course ID: {course.id}</p>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <div>No Courses Found</div>
             )}
-            </div>
-
+          </div>
         )}
+      </div>
+    </>
+  );
+};
 
+export default Courses;
+
+
+//old code
         {/* <Card className="w-1/5">
           <CardHeader>
             <CardTitle>Course 1</CardTitle>
@@ -94,9 +107,5 @@ const Courses = () => {
             <p>Card Footer</p>
           </CardFooter>
         </Card> */}
-      </div>
-    </>
-  );
-};
+  
 
-export default Courses;

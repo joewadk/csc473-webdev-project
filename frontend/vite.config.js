@@ -11,4 +11,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      '/getCourses': {
+        target: 'http://localhost:5000', // URL of your Flask backend
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
