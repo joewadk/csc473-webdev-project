@@ -9,6 +9,7 @@ npm install
 ```
 To install all of the backend dependencies, you'll need to first make a virtual environment like so :
 ```bash
+cd backend
 py -m venv .venv
 ```
 Next, you'll want to activate the venv like so:

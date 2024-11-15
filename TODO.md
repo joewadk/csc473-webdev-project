@@ -1,5 +1,5 @@
 -[x] make a frontend folder using npx
-- [ ] handle local login using a db (clerk?)
-- [ ] handle external login via the blackboard oauth
-- [ ] create components for dashboard
+- [x] handle local login using a db (clerk?)
+- [x] handle external login via google
+- [x] create components for dashboard
 - [ ] connect everything 
