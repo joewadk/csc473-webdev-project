@@ -3,7 +3,6 @@ from flask_cors import CORS
 from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
-from typing import List
 
 load_dotenv(os.path.join(os.path.dirname(__file__), '../frontend/.env'))
 
