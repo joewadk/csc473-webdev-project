@@ -1,7 +1,7 @@
 export async function getCourses() {
   try {
-    const response = await fetch('/getCourses', { //await the response from flask server
-      method: 'GET',
+    const response = await fetch('https://test.byteccny.com/getCourses', { //await the response from flask server
+      method: 'GET',  //note the above link is from my club server
       headers: {
         'Content-Type': 'application/json',
       },
